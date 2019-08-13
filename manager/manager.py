@@ -34,8 +34,8 @@ def startManage(sock_fd, logger):
 # Prints the usage instructions (example)
 ##
 def printUsage(args):
-    print 'Usage: %s <server_ip>' % (args[0])
-    print 'Exitting'
+    print('Usage: %s <server_ip>' % (args[0]))
+    print('Exitting')
     exit( 1 )
 
 ##
@@ -44,7 +44,7 @@ def printUsage(args):
 def main(args):
     # Check the arguments
     if len(args) != 1 + 1:
-        print 'Wrong amount of arguments, got %d, expected %d' % (len(args) - 1, 1)
+        print('Wrong amount of arguments, got %d, expected %d' % (len(args) - 1, 1))
         printUsage( args )
 
     # parse the args

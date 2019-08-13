@@ -33,6 +33,7 @@ tests/exploit_me_64
 # Compiled python modules
 utils/*.pyc
 utils/__pycache__
+manager/__pycache__
 manager/*.pyc
 
 # Development environment
