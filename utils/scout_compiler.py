@@ -321,7 +321,7 @@ def generateCompilationFlags(compile_flags, link_flags, logger):
             basic_link_flags    += ['melf_i386']
 
     # Final Compile & Link flags
-    compile_flags = ' '.join(map(lambda x: '-' + x, (basic_compile_flags + compile_flags + map(lambda y: 'I' + y, include_dirs))))
+    compile_flags = ' '.join(map(lambda x: '-' + x, (basic_compile_flags + compile_flags + list(map(lambda y: 'I' + y, include_dirs)))))
     link_flags    = ' '.join(map(lambda x: '-' + x, basic_link_flags + link_flags))
 
     # Restore the global flags
@@ -420,7 +420,7 @@ def compilePCScout(compilation_files, compile_flags, link_flags, elf_file, logge
     # 2. Re-organize the linker flags
     raw_link_flags = link_flags.split("-")
     if len(link_flags) != 0:
-        raw_link_flags = map(lambda x : "-Wl,%s" % (x), raw_link_flags)
+        raw_link_flags = list(map(lambda x : "-Wl,%s" % (x), raw_link_flags))
 
     # 3. Compile together all of the file (and that's it)
     logger.info("Compiling the *.c files, linking them together and creating: %s", elf_file)

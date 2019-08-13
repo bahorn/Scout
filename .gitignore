@@ -24,6 +24,7 @@ kernel_scout/user_mode/*.o
 kernel_scout/user_mode/*.S
 kernel_scout/user_mode/*.bin
 kernel_scout/user_mode/*.elf
+kernel_scout/
 
 # Compiled tests
 tests/exploit_me_32
@@ -31,4 +32,8 @@ tests/exploit_me_64
 
 # Compiled python modules
 utils/*.pyc
+utils/__pycache__
 manager/*.pyc
+
+# Development environment
+.venv/*

@@ -60,7 +60,7 @@ def generateGOT(symbol_memcpy, symbol_memset, symbol_malloc, symbol_free, symbol
 
     # Check if we need to adjust it
     if is_thumb:
-        full_got = map(lambda x: x + 1, full_got)
+        full_got = list(map(lambda x: x + 1, full_got))
 
 def generateGlobals(scout_vars_size=scout_instructions_globals_32_size, project_vars_size=0):
     """Configures the globals blob using the supplied sizes
@@ -80,12 +80,12 @@ def createContext(is_little_endian, is_32_bit):
         is_little_endian (bool): True iff the scout was compiled to little endian
         is_32_bit (bool): True iff the scout was compiled to 32 bits
     """
-    got = ''
+    got = bytes()
     # functions
     for func in full_got:
         got += struct.pack(("<" if is_little_endian else ">") + ("L" if is_32_bit else "Q"), func)
     # globals
-    got += '\x00' * globals_size
+    got += b'\x00' * globals_size
     # functions
     return got
 

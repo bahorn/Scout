@@ -58,7 +58,7 @@ def compileScout(logger) :
     compile_flags, link_flags = generateCompilationFlags(compile_flags = [], link_flags = [], logger = logger)
 
     # 5. Generate the list of compiled files
-    compilation_files = map(lambda f : os.path.join(SCOUT_DIR, f), scout_all_files) + project_files
+    compilation_files = list(map(lambda f : os.path.join(SCOUT_DIR, f), scout_all_files)) + project_files
 
     # 6. Compile an embedded scout
     logger.info("Starting to compile the user scout")
@@ -71,8 +71,8 @@ def compileScout(logger) :
 # Prints the usage instructions
 ##
 def printUsage(args) :
-    print 'Usage: %s' % (Args[0].split(os.path.sep)[0])
-    print 'Exitting'
+    print('Usage: %s' % (Args[0].split(os.path.sep)[0]))
+    print('Exitting')
     exit(1)
 
 ##
@@ -81,7 +81,7 @@ def printUsage(args) :
 def main(args) :
     # Check the arguments (None for now)
     if len(args) != 1 + 0 :
-        print 'Wrong amount of arguments, got %d, expected %d' % (len(args) - 1, 0)
+        print('Wrong amount of arguments, got %d, expected %d' % (len(args) - 1, 0))
         printUsage(args)
 
     # Create the logger
